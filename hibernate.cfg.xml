@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+    
+      <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+      <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/sales?autoReconnect=true</property>
+      <property name="hibernate.connection.username">root</property>
+      <property name="hibernate.connection.password"></property>
+      <property name="hibernate.connection.pool_size">10</property>    
+      
+      
+		
+		<!-- DEPRECATED very expensive property name="c3p0.validate>--> 
+        <!--<property name="hibernate.hbm2ddl.auto">update</property>--> 
+        <!-- Disable second-level cache.
+        <property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+        <property name="cache.provider_configuration_file_resource_path">ehcache.xml</property>
+        <property name="cache.use_query_cache">true</property>
+        <property name="max_fetch_depth">3</property> -->
+    
+        <!-- Print SQL to stdout. -->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+    
+        <!-- Drop and then re-create schema on SessionFactory build, for testing. -->
+        <!-- <property name="hbm2ddl.auto">create</property> -->
+    
+        <!-- Bind the getCurrentSession() method to the thread. -->
+        <property name="current_session_context_class">thread</property>
+        <property name="use_reflection_optimizer">true</property>
+
+		<!-- Connection auto reconnect after long inactivity --> 
+		<property name="connection.autoReconnect">true</property>
+		<property name="connection.autoReconnectForPools">true</property>  
+		<property name="connection.is-connection-validation-required">true</property>
+		  
+        <!-- Hibernate XML mapping files -->
+        
+        <mapping class="com.entity.ConstantsEntity"/>
+        <mapping class="com.entity.SalestypeAmtEntity"/>
+        <mapping class="com.entity.SalestypeBillEntity"/>
+        <mapping class="com.entity.SalestypeBillEntityDetail"/>
+        
+    </session-factory>
+
+</hibernate-configuration>
